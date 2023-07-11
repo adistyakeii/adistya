@@ -1,10 +1,22 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import { RouterProvider } from "react-router-dom";
+import routes from "@app/pages/Routes";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+import "@app/styles/global.css";
+import { AuthProvider } from "./contexts/AuthContext";
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+
+root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <AuthProvider>
+      <ThemeProvider>
+        <RouterProvider router={routes} />
+      </ThemeProvider>
+    </AuthProvider>
+  </React.StrictMode>
+);

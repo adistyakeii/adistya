@@ -18,6 +18,13 @@ module.exports = {
   },
   plugins: ['react-refresh'],
   rules: {
+    "@typescript-eslint/no-unsafe-call": "error",
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
