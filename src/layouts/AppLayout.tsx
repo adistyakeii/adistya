@@ -5,8 +5,8 @@ import { HiOutlineGlobeAlt, HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { ThemeContext, ThemeType } from "../contexts/ThemeContext";
 import classNames from "@app/libs/ClassNames";
-import { TbBrandTelegram } from "react-icons/tb";
-import { FiGithub, FiMail } from "react-icons/fi";
+import { TbBrandWhatsapp } from "react-icons/tb";
+import { FiInstagram, FiMail } from "react-icons/fi";
 
 export default function AppLayout() {
   const scrollPos = useScrollPos();
@@ -124,15 +124,15 @@ export default function AppLayout() {
           </div>
           <div className="flex flex-row items-center space-x-3 w-full md:max-w-max">
             <a
-              href="https://t.me/triankyy"
+              href="https://wa.me/+6289504527176"
               target="_blank"
-              aria-label="Telegram account"
+              aria-label="WhatsApp account"
               className="inline-flex items-center justify-center w-7 h-7 mr-0 last-of-type:mr-0"
             >
-              <TbBrandTelegram className="w-5 h-5" />
+              <TbBrandWhatsapp className="w-5 h-5" />
             </a>
             <a
-              href="mailto: triankyy@gmail.com?subject="
+              href="mailto: adistyakeii@gmail.com?subject="
               target="_blank"
               aria-label="Email me"
               className="inline-flex items-center justify-center w-7 h-7 mr-2.5 last-of-type:mr-0"
@@ -140,12 +140,12 @@ export default function AppLayout() {
               <FiMail className="w-5 h-5" />
             </a>
             <a
-              href="https://github.com/triankyy"
+              href="https://www.instagram.com/hey_its.adiss/"
               target="_blank"
-              aria-label="Github account"
+              aria-label="Instagram account"
               className="inline-flex items-center justify-center w-7 h-7 mr-2.5 last-of-type:mr-0"
             >
-              <FiGithub className="w-5 h-5" />
+              <FiInstagram className="w-5 h-5" />
             </a>
           </div>
         </div>
