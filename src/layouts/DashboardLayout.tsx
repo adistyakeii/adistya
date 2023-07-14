@@ -1,32 +1,22 @@
 import useScrollPos from "@app/hooks/UseScrollPos";
-import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useContext } from "react";
-import { HiOutlineGlobeAlt, HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
-import { Link, NavLink, Outlet } from "react-router-dom";
-import { ThemeContext, ThemeType } from "../contexts/ThemeContext";
 import classNames from "@app/libs/ClassNames";
-import { TbBrandTelegram } from "react-icons/tb";
-import { FiGithub, FiMail } from "react-icons/fi";
+import { useEffect } from "react";
+import { BiLogOut } from "react-icons/bi";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function DashboardLayout() {
   const scrollPos = useScrollPos();
-  const { changeTheme, theme } = useContext(ThemeContext);
+  const navigate = useNavigate();
+  const { auth, loading } = useAuth();
 
-  function renderIcon(option: ThemeType) {
-    switch (option) {
-      case "light":
-        return <HiOutlineSun className="w-5 h-5" />;
-      case "dark":
-        return <HiOutlineMoon className="w-5 h-5" />;
-      case "system":
-        return <HiOutlineGlobeAlt className="w-5 h-5" />;
-      default:
-        return null;
+  const navLink = ["Devotional", "Quiz"];
+
+  useEffect(() => {
+    if (!auth && !loading) {
+      navigate("/login");
     }
-  }
-
-  const navLink = ["Renungan", "Quiz"];
-  const modes = ["light", "dark", "system"];
+  }, [auth, loading, navigate]);
 
   return (
     <div>
@@ -56,17 +46,17 @@ export default function DashboardLayout() {
                 </NavLink>
               ))}
             </div>
-            <Menu as="div" className="relative inline-block text-left">
-              <div>
-                <Menu.Button
-                  className="px-2 py-2 font-medium text-theme-700 dark:text-theme-200 bg-primary-400 bg-opacity-50 rounded-md dark:bg-theme-700"
-                  aria-label="Change theme"
-                >
-                  {renderIcon(theme)}
-                </Menu.Button>
-              </div>
+            {/* <Menu as="div" className="relative inline-block text-left"> */}
+            <div>
+              <button
+                className="px-2 py-2 font-medium text-theme-700 dark:text-theme-200 bg-primary-400 bg-opacity-50 rounded-md dark:bg-theme-700"
+                aria-label="logout"
+              >
+                <BiLogOut />
+              </button>
+            </div>
 
-              <Transition
+            {/* <Transition
                 as={Fragment}
                 enter="transition ease-out duration-100"
                 enterFrom="transform opacity-0 scale-95"
@@ -100,8 +90,8 @@ export default function DashboardLayout() {
                     ))}
                   </div>
                 </Menu.Items>
-              </Transition>
-            </Menu>
+              </Transition> */}
+            {/* </Menu> */}
           </div>
         </div>
       </nav>

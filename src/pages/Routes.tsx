@@ -4,11 +4,12 @@ import Home from "@app/pages/Home";
 import Login from "@app/pages/Login";
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../layouts/DashboardLayout";
-import AfterthoughtDashboard from "./dashboard/AfterthoughtDashboard";
 import QuizDashboard from "./dashboard/QuizDashboard";
 import HomeDashboard from "./dashboard/HomeDashboard";
-import Renungan from "./renungan/Renungan";
+import Devotional from "./devotional/Devotional";
 import Quiz from "./quiz/Quiz";
+import DevotionalDashboard from "./dashboard/DevotionalDashboard";
+import DevotionalDetail from "./devotional/DevotionalDetail";
 
 const routes = createBrowserRouter([
   {
@@ -17,8 +18,11 @@ const routes = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       {
-        path: "renungan",
-        element: <Renungan />,
+        path: "devotional",
+        children: [
+          { index: true, element: <Devotional /> },
+          { path: ":devotionalId", element: <DevotionalDetail /> },
+        ],
       },
       {
         path: "quiz",
@@ -32,7 +36,7 @@ const routes = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       { index: true, element: <HomeDashboard /> },
-      { path: "renungan", element: <AfterthoughtDashboard /> },
+      { path: "devotional", element: <DevotionalDashboard /> },
       { path: "quiz", element: <QuizDashboard /> },
     ],
   },

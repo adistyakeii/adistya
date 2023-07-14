@@ -25,7 +25,7 @@ export default function AppLayout() {
     }
   }
 
-  const navLink = ["Beranda", "Renungan", "Quiz"];
+  const navLink = ["Home", "Devotional", "Quiz"];
   const modes = ["light", "dark", "system"];
 
   return (
@@ -41,7 +41,7 @@ export default function AppLayout() {
               {navLink.map((link) => (
                 <NavLink
                   key={link}
-                  to={link === "Beranda" ? "/" : `/${link.toLowerCase()}`}
+                  to={link === "Home" ? "/" : `/${link.toLowerCase()}`}
                   aria-label={link}
                   className={({ isActive }) =>
                     classNames(
@@ -112,7 +112,7 @@ export default function AppLayout() {
             {[...navLink, "Login"].map((link) => (
               <Link
                 key={link}
-                to={link === "Beranda" ? "/" : `/${link.toLowerCase()}`}
+                to={link === "Home" ? "/" : `/${link.toLowerCase()}`}
                 aria-label={link}
                 className={classNames(
                   "text-theme-700 dark:text-theme-200 transition"
